@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class CubeController : MonoBehaviour
 {
+    public bool SpinLock = false;
     public Animator Animator;
 
     void OnEnable()
@@ -31,6 +32,12 @@ public class CubeController : MonoBehaviour
 
     public void MoveForward()
     {
+        if (SpinLock)
+        {
+            Debug.Log("Input is locked");
+            return;
+        }
+
         Debug.Log("Cube moves Forward");
 
         Animator.SetTrigger("Forward");
@@ -38,6 +45,12 @@ public class CubeController : MonoBehaviour
 
     public void MoveLeft()
     {
+        if (SpinLock)
+        {
+            Debug.Log("Input is locked");
+            return;
+        }
+
         Debug.Log("Cube moves Left");
 
         Animator.SetTrigger("Left");
@@ -45,6 +58,12 @@ public class CubeController : MonoBehaviour
 
     public void MoveBackward()
     {
+        if (SpinLock)
+        {
+            Debug.Log("Input is locked");
+            return;
+        }
+
         Debug.Log("Cube moves Backward");
 
         Animator.SetTrigger("Backward");
@@ -52,6 +71,12 @@ public class CubeController : MonoBehaviour
 
     public void MoveRight()
     {
+        if (SpinLock)
+        {
+            Debug.Log("Input is locked");
+            return;
+        }
+
         Debug.Log("Cube moves Right");
 
         Animator.SetTrigger("Right");

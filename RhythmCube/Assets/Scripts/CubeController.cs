@@ -16,6 +16,8 @@ public class CubeController : MonoBehaviour
             GameController.Instance.PlayerInput.OnLeft += MoveLeft;
             GameController.Instance.PlayerInput.OnBackward += MoveBackward;
             GameController.Instance.PlayerInput.OnRight += MoveRight;
+            GameController.Instance.PlayerInput.OnCounterClockwise += MoveCounterClockwise;
+            GameController.Instance.PlayerInput.OnClockwise += MoveClockwise;
         }
     }
 
@@ -27,6 +29,8 @@ public class CubeController : MonoBehaviour
             GameController.Instance.PlayerInput.OnLeft -= MoveLeft;
             GameController.Instance.PlayerInput.OnBackward -= MoveBackward;
             GameController.Instance.PlayerInput.OnRight -= MoveRight;
+            GameController.Instance.PlayerInput.OnCounterClockwise -= MoveCounterClockwise;
+            GameController.Instance.PlayerInput.OnClockwise -= MoveClockwise;
         }
     }
 
@@ -80,5 +84,31 @@ public class CubeController : MonoBehaviour
         Debug.Log("Cube moves Right");
 
         Animator.SetTrigger("Right");
+    }
+
+    public void MoveCounterClockwise()
+    {
+        if (SpinLock)
+        {
+            Debug.Log("Input is locked");
+            return;
+        }
+
+        Debug.Log("Cube moves Counter Clockwise");
+
+        Animator.SetTrigger("CounterClockwise");
+    }
+
+    public void MoveClockwise()
+    {
+        if (SpinLock)
+        {
+            Debug.Log("Input is locked");
+            return;
+        }
+
+        Debug.Log("Cube moves Clockwise");
+
+        Animator.SetTrigger("Clockwise");
     }
 }

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2025222765128852497}
   - component: {fileID: 6849483422063142487}
+  - component: {fileID: 1129850743}
   m_Layer: 0
   m_Name: LevelController
   m_TagString: Untagged
@@ -50,6 +51,25 @@ MonoBehaviour:
   ShakeyCam: 1
   MainCamera: {fileID: 733628020854286304}
   StableCamera: {fileID: 4441467222931745597}
+--- !u!95 &1129850743
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960970132984915888}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ed1a0a57e1dfdff4aae15f3d1e954600, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2170331186765382617
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,7 +219,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -248,7 +268,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2025222765128852497}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 45, y: 15, z: 0}
 --- !u!20 &733628020854286304
 Camera:
   m_ObjectHideFlags: 0
@@ -274,7 +294,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 80
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -317,7 +337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 106120490479823483, guid: 039c1cff478bb874aa5679de9792db5c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.5
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 106120490479823483, guid: 039c1cff478bb874aa5679de9792db5c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -363,6 +383,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 528377515077805137, guid: 039c1cff478bb874aa5679de9792db5c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 768754249508057738, guid: 039c1cff478bb874aa5679de9792db5c, type: 3}
       propertyPath: Animator
       value: 
@@ -370,6 +394,10 @@ PrefabInstance:
     - target: {fileID: 4134963535361208555, guid: 039c1cff478bb874aa5679de9792db5c, type: 3}
       propertyPath: m_Name
       value: CubeRoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265859248833902093, guid: 039c1cff478bb874aa5679de9792db5c, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 039c1cff478bb874aa5679de9792db5c, type: 3}

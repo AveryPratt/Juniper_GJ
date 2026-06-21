@@ -9,6 +9,8 @@ public class PlayerInput : MonoBehaviour
     public event Action OnLeft;
     public event Action OnBackward;
     public event Action OnRight;
+    public event Action OnCounterClockwise;
+    public event Action OnClockwise;
 
     void Update()
     {
@@ -43,6 +45,20 @@ public class PlayerInput : MonoBehaviour
             Debug.Log("Right");
 
             OnRight?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Less))
+        {
+            Debug.Log("CounterClockwise");
+
+            OnCounterClockwise?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Greater))
+        {
+            Debug.Log("Clockwise");
+
+            OnClockwise?.Invoke();
         }
     }
 }

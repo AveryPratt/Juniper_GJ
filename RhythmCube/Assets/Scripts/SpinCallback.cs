@@ -16,11 +16,13 @@ public class SpinCallback : StateMachineBehaviour
             foreach (Transform child in animator.transform)
             {
                 Pivot = child;
+                break;
             }
 
             foreach (Transform child in Pivot)
             {
                 PivotRoot = child;
+                break;
             }
 
             IsInitialized = true;

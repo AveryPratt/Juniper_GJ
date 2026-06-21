@@ -5,22 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController Instance;
+
     public int ActiveScene = 1;
+    public PlayerInput PlayerInput;
 
     void Awake()
     {
-        DontDestroyOnLoad(this);
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         SceneManager.LoadScene(ActiveScene);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

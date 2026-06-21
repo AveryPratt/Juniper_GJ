@@ -1,18 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public event Action OnForward;
+    public event Action OnLeft;
+    public event Action OnBackward;
+    public event Action OnRight;
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Pause");
+        }
+
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Debug.Log("Forward");
+
+            OnForward?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Debug.Log("Left");
+
+            OnLeft?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            Debug.Log("Backward");
+
+            OnBackward?.Invoke();
+        }
+
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            Debug.Log("Right");
+
+            OnRight?.Invoke();
+        }
     }
 }

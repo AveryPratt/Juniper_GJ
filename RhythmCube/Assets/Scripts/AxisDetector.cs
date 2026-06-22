@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class AxisDetector : MonoBehaviour
@@ -8,6 +9,11 @@ public class AxisDetector : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        CurrentContainer = other.GetComponent<AxisContainer>();
+        AxisContainer container = other.GetComponent<AxisContainer>();
+
+        if (container != null)
+        {
+            CurrentContainer = container;
+        }
     }
 }

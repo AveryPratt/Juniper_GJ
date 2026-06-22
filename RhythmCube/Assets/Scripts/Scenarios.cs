@@ -13,6 +13,7 @@ namespace Assets.Scripts
     public class Scenario
     {
         public string InstructionText { get; set; }
+        public string Metadata { get; set; }
         public ScenarioCallback CheckForCompletion { get; set; }
 
         public Scenario(ScenarioCallback checkForCompletion)
@@ -30,29 +31,42 @@ public partial class LevelController : MonoBehaviour
     {
         _scenarios = new Scenario[]
         {
+            // tutorial
             new Scenario(CheckKeyPressed)
             {
-                InstructionText = "Press W"
+                InstructionText = "Press W",
+                Metadata = "W"
             },
             new Scenario(CheckKeyPressed)
             {
-                InstructionText = "Press A"
+                InstructionText = "Press A",
+                Metadata = "A"
             },
             new Scenario(CheckKeyPressed)
             {
-                InstructionText = "Press S"
+                InstructionText = "Press S",
+                Metadata = "S"
             },
             new Scenario(CheckKeyPressed)
             {
-                InstructionText = "Press D"
+                InstructionText = "Press D",
+                Metadata = "D"
             },
             new Scenario(CheckKeyPressed)
             {
-                InstructionText = "Press Q"
+                InstructionText = "Press Q",
+                Metadata = "Q"
             },
             new Scenario(CheckKeyPressed)
             {
-                InstructionText = "Press E"
+                InstructionText = "Press E",
+                Metadata = "E"
+            },
+            // stage 1
+            new Scenario(CheckScore)
+            {
+                InstructionText = "Good Luck!",
+                Metadata = "1"
             }
         };
     }
@@ -67,8 +81,15 @@ public partial class LevelController : MonoBehaviour
         { "E", false }
     };
 
-    public bool CheckKeyPressed (LevelController controller, Scenario scenario)
+    public bool CheckKeyPressed(LevelController controller, Scenario scenario)
     {
-        return controller.KeysPressed[scenario.InstructionText.Split(' ').Last()];
+        return controller.KeysPressed[scenario.Metadata];
+    }
+
+    public bool CheckScore(LevelController controller, Scenario scenario)
+    {
+        int threshold = int.Parse(scenario.Metadata);
+
+        return Score >= threshold;
     }
 }

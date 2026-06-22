@@ -230,6 +230,7 @@ MonoBehaviour:
   MainCamera: {fileID: 733628020854286304}
   StableCamera: {fileID: 4441467222931745597}
   InstructionText: {fileID: 7075307554384833910}
+  Score: 0
   Won: 0
 --- !u!95 &1129850743
 Animator:
@@ -905,10 +906,6 @@ PrefabInstance:
     - target: {fileID: 4134963535361208555, guid: 039c1cff478bb874aa5679de9792db5c, type: 3}
       propertyPath: m_Name
       value: CubeRoot
-      objectReference: {fileID: 0}
-    - target: {fileID: 4265859248833902093, guid: 039c1cff478bb874aa5679de9792db5c, type: 3}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 039c1cff478bb874aa5679de9792db5c, type: 3}

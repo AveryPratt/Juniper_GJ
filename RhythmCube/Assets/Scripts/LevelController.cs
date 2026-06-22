@@ -12,6 +12,7 @@ public partial class LevelController : MonoBehaviour
     public Camera StableCamera;
     public Text InstructionText;
 
+    public int Score = 0;
     public bool Won = false;
 
     private int _activeScenarioIdx = -1;

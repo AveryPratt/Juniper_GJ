@@ -15,19 +15,27 @@ public class AxisContainer : MonoBehaviour
 
     public bool AddIngredient(Ingredient ingredient)
     {
-        if (Ingredients.Count >= PositionLocks.Length)
+        if (ingredient == null || Ingredients.Count >= PositionLocks.Length)
         {
             return false;
         }
 
         Ingredients.Push(ingredient);
 
+        Reorganize();
+
         return true;
     }
 
     public Ingredient RemoveIngredient()
     {
-        return Ingredients.Pop();
+        Ingredient popped = Ingredients.Pop();
+
+        popped.Attatch(null);
+
+        Reorganize();
+
+        return popped;
     }
 
     private void Reorganize()

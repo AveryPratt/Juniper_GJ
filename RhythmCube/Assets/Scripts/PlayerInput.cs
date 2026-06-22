@@ -16,48 +16,37 @@ public class PlayerInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
             Debug.Log("Pause");
         }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("Forward");
-
             OnForward?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("Left");
-
             OnLeft?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.UpArrow))
         {
-            Debug.Log("Backward");
-
             OnBackward?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
-            Debug.Log("Right");
-
             OnRight?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Greater))
         {
-            Debug.Log("CounterClockwise");
-
             OnCounterClockwise?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Less))
         {
-            Debug.Log("Clockwise");
-
             OnClockwise?.Invoke();
         }
     }

@@ -42,7 +42,6 @@ public class SpinCallback : StateMachineBehaviour
         Pivot.localRotation.Normalize();
 
         animator.Play("Idle");
-        Debug.Log("Animation Done");
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

@@ -10,7 +10,8 @@ public partial class LevelController : MonoBehaviour
     public bool ShakeyCam = true;
     public Camera MainCamera;
     public Camera StableCamera;
-    public Text InstructionText;
+    public FadeText InstructionText;
+    public CubeController CubeController;
 
     public int Score = 0;
     public bool Won = false;
@@ -109,6 +110,16 @@ public partial class LevelController : MonoBehaviour
 
     public void UpdateInstructionText(string text)
     {
-        InstructionText.text = text;
+        InstructionText.SetText(text);
+    }
+
+    public void DockIngredients()
+    {
+        CubeController.DockIngredients();
+    }
+
+    public void PoundIngredients()
+    {
+        CubeController.PoundIngredients();
     }
 }

@@ -22,6 +22,9 @@ public class CubeController : MonoBehaviour
     public AxisDetector Detector_Y1;
     public AxisDetector Detector_Z1;
 
+    private AxisContainer[] _containers;
+    private AxisDetector[] _detectors;
+
     void OnEnable()
     {
         if (GameController.Instance != null)
@@ -33,6 +36,26 @@ public class CubeController : MonoBehaviour
             GameController.Instance.PlayerInput.OnCounterClockwise += MoveCounterClockwise;
             GameController.Instance.PlayerInput.OnClockwise += MoveClockwise;
         }
+
+        _containers = new AxisContainer[]
+        {
+            Axis_X,
+            Axis_Y,
+            Axis_Z,
+            Axis_X1,
+            Axis_Y1,
+            Axis_Z1
+        };
+
+        _detectors = new AxisDetector[]
+        {
+            Detector_X,
+            Detector_Y,
+            Detector_Z,
+            Detector_X1,
+            Detector_Y1,
+            Detector_Z1
+        };
     }
 
     void OnDisable()
@@ -48,15 +71,28 @@ public class CubeController : MonoBehaviour
         }
     }
 
+    public void DockIngredients()
+    {
+        foreach (AxisDetector detector in _detectors)
+        {
+            detector.DockIngredient();
+        }
+    }
+
+    public void PoundIngredients()
+    {
+        foreach (AxisDetector detector in _detectors)
+        {
+            detector.Pound();
+        }
+    }
+
     public void MoveForward()
     {
         if (SpinLock)
         {
-            Debug.Log("Input is locked");
             return;
         }
-
-        Debug.Log("Cube moves Forward");
 
         Animator.SetTrigger("Forward");
     }
@@ -65,11 +101,8 @@ public class CubeController : MonoBehaviour
     {
         if (SpinLock)
         {
-            Debug.Log("Input is locked");
             return;
         }
-
-        Debug.Log("Cube moves Left");
 
         Animator.SetTrigger("Left");
     }
@@ -78,11 +111,8 @@ public class CubeController : MonoBehaviour
     {
         if (SpinLock)
         {
-            Debug.Log("Input is locked");
             return;
         }
-
-        Debug.Log("Cube moves Backward");
 
         Animator.SetTrigger("Backward");
     }
@@ -91,11 +121,8 @@ public class CubeController : MonoBehaviour
     {
         if (SpinLock)
         {
-            Debug.Log("Input is locked");
             return;
         }
-
-        Debug.Log("Cube moves Right");
 
         Animator.SetTrigger("Right");
     }
@@ -104,11 +131,8 @@ public class CubeController : MonoBehaviour
     {
         if (SpinLock)
         {
-            Debug.Log("Input is locked");
             return;
         }
-
-        Debug.Log("Cube moves Counter Clockwise");
 
         Animator.SetTrigger("CounterClockwise");
     }
@@ -117,11 +141,8 @@ public class CubeController : MonoBehaviour
     {
         if (SpinLock)
         {
-            Debug.Log("Input is locked");
             return;
         }
-
-        Debug.Log("Cube moves Clockwise");
 
         Animator.SetTrigger("Clockwise");
     }

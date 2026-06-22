@@ -6,14 +6,18 @@ public class Ingredient : MonoBehaviour
 {
     public Transform Transform;
 
-    public Ingredient()
+    void Awake()
     {
         Transform = GetComponent<Transform>();
     }
 
-    public void Attatch(Transform transform)
+    public void Attatch(Transform parent)
     {
-        Transform.SetParent(Transform);
-        Transform.localPosition.Set(0, 0, 0);
+        Transform.SetParent(parent);
+
+        if (parent != null)
+        {
+            Transform.localPosition.Set(0, 0, 0);
+        }
     }
 }

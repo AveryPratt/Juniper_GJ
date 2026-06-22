@@ -47,14 +47,14 @@ public class PlayerInput : MonoBehaviour
             OnRight?.Invoke();
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Less))
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Greater))
         {
             Debug.Log("CounterClockwise");
 
             OnCounterClockwise?.Invoke();
         }
 
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.Greater))
+        if (Input.GetKeyDown(KeyCode.Q) || Input.GetKeyDown(KeyCode.Less))
         {
             Debug.Log("Clockwise");
 

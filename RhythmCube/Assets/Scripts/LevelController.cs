@@ -17,6 +17,11 @@ public class LevelController : MonoBehaviour
         }
     }
 
+    public void SetShakeyCam(bool val)
+    {
+        ShakeyCam = val;
+    }
+
     void Update()
     {
         if (ShakeyCam)

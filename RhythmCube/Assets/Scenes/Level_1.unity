@@ -128,17 +128,6 @@ Light:
   m_CorrespondingSourceObject: {fileID: 7333441452665150927, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
   m_PrefabInstance: {fileID: 6385381783957809428}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1129850744 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6849483422063142487, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
-  m_PrefabInstance: {fileID: 6385381783957809428}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b428dd04e7c5bec41a3126946acd96d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1586441502
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,38 +317,6 @@ PrefabInstance:
     - target: {fileID: 2025222765128852497, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6650413253761226454, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6650413253761226454, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6650413253761226454, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1129850744}
-    - target: {fileID: 6650413253761226454, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6650413253761226454, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetShakeyCam
-      objectReference: {fileID: 0}
-    - target: {fileID: 6650413253761226454, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 6650413253761226454, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
-      propertyPath: onValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6849483422063142487, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
-      propertyPath: ShakeyCam
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}

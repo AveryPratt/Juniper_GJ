@@ -8,6 +8,20 @@ public class CubeController : MonoBehaviour
     public bool SpinLock = false;
     public Animator Animator;
 
+    public AxisContainer Axis_X;
+    public AxisContainer Axis_Y;
+    public AxisContainer Axis_Z;
+    public AxisContainer Axis_X1;
+    public AxisContainer Axis_Y1;
+    public AxisContainer Axis_Z1;
+
+    public AxisDetector Detector_X;
+    public AxisDetector Detector_Y;
+    public AxisDetector Detector_Z;
+    public AxisDetector Detector_X1;
+    public AxisDetector Detector_Y1;
+    public AxisDetector Detector_Z1;
+
     void OnEnable()
     {
         if (GameController.Instance != null)

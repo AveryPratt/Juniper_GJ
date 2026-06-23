@@ -40,9 +40,14 @@ public class AxisDetector : MonoBehaviour
         {
             float dist = (_verificationCollider.transform.position - transform.position).magnitude;
 
-            if (dist < 3)
+            if (dist < 1)
             {
+                if (!string.IsNullOrEmpty(IngredientToLoad)) { CurrentContainer.Unmark(); }
+
                 CurrentContainer = _verificationCandidate;
+
+                if (!string.IsNullOrEmpty(IngredientToLoad)) { CurrentContainer.Mark(); }
+
                 _verificationCandidate = null;
             }
         }

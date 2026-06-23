@@ -5,12 +5,26 @@ using UnityEngine;
 
 public class AxisContainer : MonoBehaviour
 {
+    public MeshRenderer MeshRenderer;
+    public Material DefaultMaterial;
+    public Material MarkedMaterial;
+
     public Transform[] PositionLocks;
     public Stack<Ingredient> Ingredients;
 
     public AxisContainer()
     {
         Ingredients = new Stack<Ingredient>();
+    }
+
+    public void Mark()
+    {
+        MeshRenderer.material = MarkedMaterial;
+    }
+
+    public void Unmark()
+    {
+        MeshRenderer.material = DefaultMaterial;
     }
 
     public bool TryAddIngredient(Ingredient ingredient)

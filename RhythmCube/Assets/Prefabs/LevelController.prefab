@@ -906,7 +906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6350f911700887478e543eccccf6f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IngredientCount: 10
+  IngredientCount: 40
   IngredientTypes:
   - {fileID: 8761749206394849765, guid: 974e3fc3a12ebbc408777878b8b5e36b, type: 3}
 --- !u!1001 &1582392100044502443

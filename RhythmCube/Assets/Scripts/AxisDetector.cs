@@ -13,6 +13,10 @@ public class AxisDetector : MonoBehaviour
 
     public Queue<Ingredient> Queue;
 
+    private AxisContainer _verificationCandidate;
+    private Collider _verificationCollider;
+    private float _verificationStartTime;
+
     void Awake()
     {
         Queue = new Queue<Ingredient>();
@@ -24,12 +28,33 @@ public class AxisDetector : MonoBehaviour
 
         if (container != null)
         {
-            CurrentContainer = container;
+            _verificationStartTime = Time.time;
+            _verificationCandidate = other.GetComponent<AxisContainer>();
+            _verificationCollider = other;
+        }
+    }
+
+    void Update()
+    {
+        if (_verificationCandidate != null /*&& Time.time - _verificationStartTime >= .15f*/)
+        {
+            float dist = (_verificationCollider.transform.position - transform.position).magnitude;
+
+            if (dist < 3)
+            {
+                CurrentContainer = _verificationCandidate;
+                _verificationCandidate = null;
+            }
         }
     }
 
     public void LoadIngredient()
     {
+        if (Queue.Any())
+        {
+            return;
+        }
+
         if (!string.IsNullOrEmpty(IngredientToLoad) && IngredientPool.Instance.Inventory.ContainsKey(IngredientToLoad))
         {
             Ingredient ingredient = IngredientPool.Instance.FetchIngredient(IngredientToLoad).GetComponent<Ingredient>();
@@ -43,7 +68,10 @@ public class AxisDetector : MonoBehaviour
     {
         if (Queue.Any())
         {
-            CurrentContainer.TryAddIngredient(Queue.Dequeue());
+            if (CurrentContainer.TryAddIngredient(Queue.Peek()))
+            {
+                Queue.Dequeue();
+            }
         }
     }
 

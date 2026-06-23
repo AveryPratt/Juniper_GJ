@@ -6,7 +6,7 @@ public class IngredientPool : MonoBehaviour
 {
     public static IngredientPool Instance;
 
-    public int IngredientCount = 10;
+    public int IngredientCount = 40;
     public GameObject[] IngredientTypes;
     public Dictionary<string, GameObject[]> Inventory;
     public Dictionary<string, int> Pointers;

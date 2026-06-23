@@ -270,6 +270,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 606602534036316006, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
+      propertyPath: m_Name
+      value: Docks
+      objectReference: {fileID: 0}
     - target: {fileID: 1960970132984915888, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
       propertyPath: m_Name
       value: LevelController

@@ -42,11 +42,11 @@ public class AxisDetector : MonoBehaviour
 
             if (dist < 1)
             {
-                if (!string.IsNullOrEmpty(IngredientToLoad)) { CurrentContainer.Unmark(); }
+                //if (!string.IsNullOrEmpty(IngredientToLoad)) { CurrentContainer.Unmark(); }
 
                 CurrentContainer = _verificationCandidate;
 
-                if (!string.IsNullOrEmpty(IngredientToLoad)) { CurrentContainer.Mark(); }
+                //if (!string.IsNullOrEmpty(IngredientToLoad)) { CurrentContainer.Mark(); }
 
                 _verificationCandidate = null;
             }

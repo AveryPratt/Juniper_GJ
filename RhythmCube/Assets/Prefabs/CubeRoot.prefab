@@ -6156,6 +6156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IngredientToLoad: 
+  PoundsIngredients: 0
   CurrentContainer: {fileID: 4039809016531540230}
   Dock: {fileID: 22892031849265924}
 --- !u!54 &8004028915991542507
@@ -6743,6 +6745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IngredientToLoad: 
+  PoundsIngredients: 0
   CurrentContainer: {fileID: 2999731212878074674}
   Dock: {fileID: 7888221236633794148}
 --- !u!54 &2988592917073901544
@@ -7136,6 +7140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IngredientToLoad: 
+  PoundsIngredients: 1
   CurrentContainer: {fileID: 7954981039151184968}
   Dock: {fileID: 4300785822402802473}
 --- !u!54 &5256046902301088371
@@ -8345,6 +8351,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IngredientToLoad: Ingredient
+  PoundsIngredients: 0
   CurrentContainer: {fileID: 6049104073910228016}
   Dock: {fileID: 320015808388821662}
 --- !u!54 &5141710034396855837
@@ -9199,6 +9207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IngredientToLoad: 
+  PoundsIngredients: 0
   CurrentContainer: {fileID: 4713159860636650675}
   Dock: {fileID: 4017834687721639458}
 --- !u!54 &1979422562561339940
@@ -9327,6 +9337,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IngredientToLoad: 
+  PoundsIngredients: 0
   CurrentContainer: {fileID: 4650773709401820358}
   Dock: {fileID: 7677324917327435848}
 --- !u!54 &7459095627383701519

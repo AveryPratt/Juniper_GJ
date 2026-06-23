@@ -12,6 +12,7 @@ public partial class LevelController : MonoBehaviour
     public Camera StableCamera;
     public FadeText InstructionText;
     public CubeController CubeController;
+    public IngredientPool IngredientPool;
 
     public int Score = 0;
     public bool Won = false;
@@ -111,6 +112,11 @@ public partial class LevelController : MonoBehaviour
     public void UpdateInstructionText(string text)
     {
         InstructionText.SetText(text);
+    }
+
+    public void LoadIngredients()
+    {
+        CubeController.LoadIngredients();
     }
 
     public void DockIngredients()

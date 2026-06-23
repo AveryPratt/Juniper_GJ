@@ -13,7 +13,7 @@ public class AxisContainer : MonoBehaviour
         Ingredients = new Stack<Ingredient>();
     }
 
-    public bool AddIngredient(Ingredient ingredient)
+    public bool TryAddIngredient(Ingredient ingredient)
     {
         if (ingredient == null || Ingredients.Count >= PositionLocks.Length)
         {
@@ -29,6 +29,11 @@ public class AxisContainer : MonoBehaviour
 
     public Ingredient RemoveIngredient()
     {
+        if (Ingredients.Count == 0)
+        {
+            return null;
+        }
+
         Ingredient popped = Ingredients.Pop();
 
         popped.Attatch(null);

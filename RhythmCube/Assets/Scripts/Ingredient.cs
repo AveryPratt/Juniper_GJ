@@ -17,7 +17,7 @@ public class Ingredient : MonoBehaviour
 
         if (parent != null)
         {
-            Transform.localPosition.Set(0, 0, 0);
+            Transform.localPosition = Vector3.zero;
         }
     }
 }

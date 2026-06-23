@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class AxisDetector : MonoBehaviour
 {
+    public string IngredientToLoad;
+    public bool PoundsIngredients = false;
     public AxisContainer CurrentContainer;
     public Transform Dock;
 
@@ -26,16 +28,37 @@ public class AxisDetector : MonoBehaviour
         }
     }
 
+    public void LoadIngredient()
+    {
+        if (!string.IsNullOrEmpty(IngredientToLoad) && IngredientPool.Instance.Inventory.ContainsKey(IngredientToLoad))
+        {
+            Ingredient ingredient = IngredientPool.Instance.FetchIngredient(IngredientToLoad).GetComponent<Ingredient>();
+
+            Queue.Enqueue(ingredient);
+            ingredient.Attatch(Dock);
+        }
+    }
+
     public void DockIngredient()
     {
         if (Queue.Any())
         {
-            CurrentContainer.AddIngredient(Queue.Dequeue());
+            CurrentContainer.TryAddIngredient(Queue.Dequeue());
         }
     }
 
     public void Pound()
     {
+        if (!PoundsIngredients)
+        {
+            return;
+        }
 
+        Ingredient ingredient = CurrentContainer.RemoveIngredient();
+
+        if (ingredient != null)
+        {
+            ingredient.gameObject.SetActive(false);
+        }
     }
 }

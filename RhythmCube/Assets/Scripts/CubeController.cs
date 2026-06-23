@@ -71,6 +71,14 @@ public class CubeController : MonoBehaviour
         }
     }
 
+    public void LoadIngredients()
+    {
+        foreach (AxisDetector detector in _detectors)
+        {
+            detector.LoadIngredient();
+        }
+    }
+
     public void DockIngredients()
     {
         foreach (AxisDetector detector in _detectors)

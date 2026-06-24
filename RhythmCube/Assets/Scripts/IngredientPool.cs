@@ -7,9 +7,9 @@ public class IngredientPool : MonoBehaviour
     public static IngredientPool Instance;
 
     public int IngredientCount = 40;
-    public GameObject[] IngredientTypes;
-    public Dictionary<string, GameObject[]> Inventory;
-    public Dictionary<string, int> Pointers;
+    public Ingredient[] IngredientPrefabs;
+    public Dictionary<IIngredientType, Ingredient[]> Inventory;
+    public Dictionary<IIngredientType, int> Pointers;
 
     void Awake()
     {
@@ -22,28 +22,28 @@ public class IngredientPool : MonoBehaviour
             Destroy(gameObject);
         }
 
-        Inventory = new Dictionary<string, GameObject[]>();
-        Pointers = new Dictionary<string, int>();
+        Inventory = new Dictionary<IIngredientType, Ingredient[]>();
+        Pointers = new Dictionary<IIngredientType, int>();
 
-        foreach (GameObject type in IngredientTypes)
+        foreach (Ingredient prefabIngredient in IngredientPrefabs)
         {
-            Inventory.Add(type.name, new GameObject[IngredientCount]);
-            Pointers.Add(type.name, 0);
+            Inventory.Add(prefabIngredient.IngredientType, new Ingredient[IngredientCount]);
+            Pointers.Add(prefabIngredient.IngredientType, 0);
 
             for (int i = 0; i < IngredientCount; i++)
             {
-                GameObject instance = Instantiate(type);
-                Inventory[type.name][i] = instance;
-                instance.SetActive(false);
+                Ingredient instance = Instantiate(prefabIngredient).GetComponent<Ingredient>();
+                Inventory[prefabIngredient.IngredientType][i] = instance;
+                instance.gameObject.SetActive(false);
             }
         }
     }
 
-    public GameObject FetchIngredient(string ingredientType)
+    public Ingredient FetchIngredient(IIngredientType ingredientType)
     {
         for (int i = 0; i < IngredientCount; i++)
         {
-            if (!Inventory[ingredientType][Pointers[ingredientType]].activeInHierarchy)
+            if (!Inventory[ingredientType][Pointers[ingredientType]].gameObject.activeInHierarchy)
             {
                 break;
             }
@@ -51,12 +51,12 @@ public class IngredientPool : MonoBehaviour
             IncrementPointer(ingredientType);
         }
 
-        GameObject ingredient = Inventory[ingredientType][Pointers[ingredientType]];
-        ingredient.SetActive(true);
+        Ingredient ingredient = Inventory[ingredientType][Pointers[ingredientType]];
+        ingredient.gameObject.SetActive(true);
         return ingredient;
     }
 
-    public void IncrementPointer(string ingredientType)
+    public void IncrementPointer(IIngredientType ingredientType)
     {
         Pointers[ingredientType] += 1;
 

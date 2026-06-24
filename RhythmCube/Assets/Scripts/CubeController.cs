@@ -8,6 +8,8 @@ public class CubeController : MonoBehaviour
     public bool SpinLock = false;
     public Animator Animator;
 
+    public Transform CenterCube;
+    private MeshRenderer _centerMeshRenderer;
     public AxisContainer Axis_X;
     public AxisContainer Axis_Y;
     public AxisContainer Axis_Z;
@@ -22,8 +24,16 @@ public class CubeController : MonoBehaviour
     public AxisDetector Detector_Y1;
     public AxisDetector Detector_Z1;
 
+    public Material[] CenterMaterials;
+
     private AxisContainer[] _containers;
     private AxisDetector[] _detectors;
+    private Ingredient _centerIngredient;
+
+    void Awake()
+    {
+        _centerMeshRenderer = CenterCube.GetComponent<MeshRenderer>();
+    }
 
     void OnEnable()
     {
@@ -69,6 +79,64 @@ public class CubeController : MonoBehaviour
             GameController.Instance.PlayerInput.OnCounterClockwise -= MoveCounterClockwise;
             GameController.Instance.PlayerInput.OnClockwise -= MoveClockwise;
         }
+    }
+
+    public void PushToCenter(Ingredient ingredient)
+    {
+        if (_centerIngredient != null)
+        {
+            _centerIngredient.gameObject.SetActive(false);
+        }
+
+        ingredient.Attatch(CenterCube);
+        _centerIngredient = ingredient;
+
+        ActivateCenterIngredient();
+    }
+
+    public void ActivateCenterIngredient()
+    {
+        Material centerMat;
+
+        if (_centerIngredient == null)
+        {
+            centerMat = CenterMaterials[0];
+        }
+        else
+        {
+            switch (_centerIngredient.IngredientType)
+            {
+                case IIngredientType.White:
+                    centerMat = CenterMaterials[6];
+                    break;
+                case IIngredientType.Green:
+                    centerMat = CenterMaterials[2];
+                    break;
+                case IIngredientType.Purple:
+                    centerMat = CenterMaterials[4];
+                    break;
+                case IIngredientType.Red:
+                    centerMat = CenterMaterials[5];
+                    break;
+                case IIngredientType.Blue:
+                    centerMat = CenterMaterials[1];
+                    break;
+                case IIngredientType.Pink:
+                    centerMat = CenterMaterials[3];
+                    break;
+                case IIngredientType.Yellow:
+                    centerMat = CenterMaterials[7];
+                    break;
+                default:
+                    Debug.Log("Unhandled gameobject type in center.");
+                    centerMat = CenterMaterials[0];
+                    break;
+            }
+
+            LevelController.Instance.Score += 1;
+        }
+
+        _centerMeshRenderer.material = centerMat;
     }
 
     public void LoadIngredients()

@@ -15,6 +15,7 @@ namespace Assets.Scripts
         public string InstructionText { get; set; }
         public string Metadata { get; set; }
         public ScenarioCallback CheckForCompletion { get; set; }
+        public IIngredientType[] IngredientsToAdd { get; set; }
 
         public Scenario(ScenarioCallback checkForCompletion)
         {
@@ -66,7 +67,20 @@ public partial class LevelController : MonoBehaviour
             new Scenario(CheckScore)
             {
                 InstructionText = "Good Luck!",
-                Metadata = "1"
+                Metadata = "10",
+                IngredientsToAdd = new IIngredientType[]
+                {
+                    IIngredientType.White
+                }
+            },
+            new Scenario(CheckScore)
+            {
+                InstructionText = "",
+                Metadata = "50",
+                IngredientsToAdd = new IIngredientType[]
+                {
+                    IIngredientType.White
+                }
             }
         };
     }

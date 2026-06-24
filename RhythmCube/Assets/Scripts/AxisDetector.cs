@@ -7,22 +7,23 @@ using UnityEngine;
 public class AxisDetector : MonoBehaviour
 {
     public bool LoadsIngredients = false;
-    public string[] IngredientsToLoad;
+    public IIngredientType[] IngredientsToLoad;
     public bool PoundsIngredients = false;
     public AxisContainer CurrentContainer;
     public Transform Dock;
 
     public Queue<Ingredient> Queue;
+    public int MaxIngredients = 3;
 
     private AxisContainer _verificationCandidate;
     private Collider _verificationCollider;
     private float _verificationStartTime;
-    private Dictionary<string, int> _ingredientHistories;
+    private Dictionary<IIngredientType, int> _ingredientHistories;
 
     void Awake()
     {
         Queue = new Queue<Ingredient>();
-        _ingredientHistories = new Dictionary<string, int>();
+        _ingredientHistories = new Dictionary<IIngredientType, int>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -58,65 +59,106 @@ public class AxisDetector : MonoBehaviour
 
     public void LoadIngredient()
     {
-        if (!LoadsIngredients || Queue.Any())
+        if (!LoadsIngredients || Queue.Count >= MaxIngredients)
         {
             return;
         }
 
-        UpdateIngredientHistories();
+        IIngredientType? forceLoad = UpdateIngredientHistories();
 
-        string forceLoad = null;
-
-        foreach (string key in _ingredientHistories.Keys.ToArray())
+        if (forceLoad == null)
         {
-            _ingredientHistories[key] += 1;
-
-            if (_ingredientHistories[key] >= IngredientsToLoad.Length * 2)
+            foreach (IIngredientType key in _ingredientHistories.Keys.ToArray())
             {
-                forceLoad = key;
+                _ingredientHistories[key] += 1;
+
+                if (_ingredientHistories[key] >= IngredientsToLoad.Length * 2)
+                {
+                    forceLoad = key;
+                }
             }
         }
 
-        string ingredientType = IngredientsToLoad.Length == 0 ? null : !string.IsNullOrEmpty(forceLoad) ? forceLoad : IngredientsToLoad[Mathf.FloorToInt(Random.Range(0, IngredientsToLoad.Length))];
-        _ingredientHistories[ingredientType] = 0;
+        IIngredientType? ingredientType = IngredientsToLoad.Length == 0 ? null : forceLoad != null ? forceLoad : IngredientsToLoad[Mathf.FloorToInt(Random.Range(0, IngredientsToLoad.Length))];
 
-        if (!string.IsNullOrEmpty(ingredientType) && IngredientPool.Instance.Inventory.ContainsKey(ingredientType))
+        if (ingredientType.HasValue)
         {
-            Ingredient ingredient = IngredientPool.Instance.FetchIngredient(ingredientType).GetComponent<Ingredient>();
+            _ingredientHistories[ingredientType.Value] = 0;
 
-            Queue.Enqueue(ingredient);
-            ingredient.Attatch(Dock);
+            if (IngredientPool.Instance.Inventory.ContainsKey(ingredientType.Value))
+            {
+                Ingredient ingredient = IngredientPool.Instance.FetchIngredient(ingredientType.Value).GetComponent<Ingredient>();
+
+                Queue.Enqueue(ingredient);
+                ingredient.Attatch(Dock);
+
+                ArrangeQueue(true);
+            }
         }
     }
 
-    private void UpdateIngredientHistories()
+    private void ArrangeQueue(bool full)
     {
-        foreach (string key in IngredientsToLoad)
+        Vector3 localOffset = Vector3.zero;
+
+        List<Ingredient> orderedList = Queue.ToList();
+
+        for (int i = orderedList.Count; i < (full ? MaxIngredients : MaxIngredients - 1); i++)
+        {
+            orderedList.Insert(0, null);
+        }
+
+        foreach (Ingredient item in orderedList)
+        {
+            if (item != null)
+            {
+                item.Attatch(Dock);
+                item.gameObject.transform.localPosition += localOffset;
+            }
+
+            localOffset += new Vector3(0f, 2f, 0f);
+        }
+    }
+
+    private IIngredientType? UpdateIngredientHistories()
+    {
+        IIngredientType? forceLoad = null;
+
+        foreach (IIngredientType key in IngredientsToLoad)
         {
             if (!_ingredientHistories.ContainsKey(key))
             {
                 _ingredientHistories.Add(key, 0);
+
+                if (forceLoad == null)
+                {
+                    forceLoad = key;
+                }
             }
         }
 
-        foreach (string key in _ingredientHistories.Keys)
+        foreach (IIngredientType key in _ingredientHistories.Keys)
         {
             if (!IngredientsToLoad.Contains(key))
             {
                 _ingredientHistories.Remove(key);
             }
         }
+
+        return forceLoad;
     }
 
     public void DockIngredient()
     {
-        if (Queue.Any())
+        if (Queue.Count >= MaxIngredients)
         {
             if (CurrentContainer.TryAddIngredient(Queue.Peek()))
             {
                 Queue.Dequeue();
             }
         }
+
+        ArrangeQueue(false);
     }
 
     public void Pound()

@@ -4,20 +4,36 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour
 {
-    public Transform Transform;
+    public IIngredientType IngredientType;
 
     void Awake()
     {
-        Transform = GetComponent<Transform>();
+        //Transform = GetComponent<Transform>();
+    }
+
+    public void SwitchType(IIngredientType ingredientType)
+    {
+
     }
 
     public void Attatch(Transform parent)
     {
-        Transform.SetParent(parent);
+        gameObject.transform.SetParent(parent);
 
         if (parent != null)
         {
-            Transform.localPosition = Vector3.zero;
+            gameObject.transform.localPosition = Vector3.zero;
         }
     }
+}
+
+public enum IIngredientType
+{
+    White,
+    Green,
+    Purple,
+    Red,
+    Blue,
+    Pink,
+    Yellow
 }

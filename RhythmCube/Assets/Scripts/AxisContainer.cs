@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class AxisContainer : MonoBehaviour
 {
+    public CubeController CubeController;
+
     public MeshRenderer MeshRenderer;
     public Material DefaultMaterial;
     public Material MarkedMaterial;
 
-    public Transform[] PositionLocks;
-    public Stack<Ingredient> Ingredients;
+    public Transform[] PositionAnchors;
+    public LinkedList<Ingredient> Ingredients;
 
     public AxisContainer()
     {
-        Ingredients = new Stack<Ingredient>();
+        Ingredients = new LinkedList<Ingredient>();
     }
 
     public void Mark()
@@ -29,12 +31,18 @@ public class AxisContainer : MonoBehaviour
 
     public bool TryAddIngredient(Ingredient ingredient)
     {
-        if (ingredient == null || Ingredients.Count >= PositionLocks.Length)
+        if (ingredient == null)
         {
             return false;
         }
 
-        Ingredients.Push(ingredient);
+        if (Ingredients.Count >= PositionAnchors.Length)
+        {
+            CubeController.PushToCenter(Ingredients.Last.Value);
+            Ingredients.RemoveLast();
+        }
+
+        Ingredients.AddFirst(ingredient);
 
         Reorganize();
 
@@ -48,7 +56,8 @@ public class AxisContainer : MonoBehaviour
             return null;
         }
 
-        Ingredient popped = Ingredients.Pop();
+        Ingredient popped = Ingredients.First.Value;
+        Ingredients.RemoveFirst();
 
         popped.Attatch(null);
 
@@ -61,7 +70,7 @@ public class AxisContainer : MonoBehaviour
     {
         for (int i = 0; i < Ingredients.Count; i++)
         {
-            Ingredients.ElementAt(i).Attatch(PositionLocks[i]);
+            Ingredients.ElementAt(i).Attatch(PositionAnchors[i]);
         }
     }
 }

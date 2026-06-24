@@ -1,16 +1,20 @@
 using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public partial class LevelController : MonoBehaviour
 {
+    public static LevelController Instance;
+
     public bool ShakeyCam = true;
     public Camera MainCamera;
     public Camera StableCamera;
     public FadeText InstructionText;
+    public Text ScoreText;
     public CubeController CubeController;
     public IngredientPool IngredientPool;
 
@@ -23,6 +27,18 @@ public partial class LevelController : MonoBehaviour
         get
         {
             return _scenarios[_activeScenarioIdx];
+        }
+    }
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
         }
     }
 
@@ -44,6 +60,8 @@ public partial class LevelController : MonoBehaviour
 
     void Update()
     {
+        ScoreText.text = "Score: " + Score.ToString();
+
         if (ShakeyCam)
         {
             if (StableCamera.isActiveAndEnabled)
@@ -104,6 +122,15 @@ public partial class LevelController : MonoBehaviour
             Won = true;
             UpdateInstructionText("You Win!");
             return;
+        }
+
+        if (_activeScenario.IngredientsToAdd != null && _activeScenario.IngredientsToAdd.Any())
+        {
+            List<IIngredientType> ingredientsList = CubeController.Detector_Y.IngredientsToLoad.ToList();
+
+            ingredientsList.AddRange(_activeScenario.IngredientsToAdd);
+
+            CubeController.Detector_Y.IngredientsToLoad = ingredientsList.ToArray();
         }
 
         UpdateInstructionText(_activeScenario.InstructionText);

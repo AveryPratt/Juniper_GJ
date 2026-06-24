@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8021964844452858459}
   - component: {fileID: 2961149644469118341}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2161dda9e1a23b44e9608cfa092e0ffb, type: 2}
+  - {fileID: 2100000, guid: 81f2326477844a6468270ac539dbecff, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6475,10 +6475,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadsIngredients: 0
-  IngredientsToLoad: []
+  IngredientsToLoad: 
   PoundsIngredients: 0
   CurrentContainer: {fileID: 4039809016531540230}
   Dock: {fileID: 8363482462301369017}
+  MaxIngredients: 3
 --- !u!54 &8004028915991542507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6610,6 +6611,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SpinLock: 0
   Animator: {fileID: 0}
+  CenterCube: {fileID: 2741546962147284768}
   Axis_X: {fileID: 4713159860636650675}
   Axis_Y: {fileID: 6049104073910228016}
   Axis_Z: {fileID: 4039809016531540230}
@@ -6622,6 +6624,15 @@ MonoBehaviour:
   Detector_X1: {fileID: 5801634019475032123}
   Detector_Y1: {fileID: 7774687180019321944}
   Detector_Z1: {fileID: 2854608611451679137}
+  CenterMaterials:
+  - {fileID: 2100000, guid: 81f2326477844a6468270ac539dbecff, type: 2}
+  - {fileID: 2100000, guid: 832613779dac9d44b9117779d9b5bbff, type: 2}
+  - {fileID: 2100000, guid: f29a80b92d0b6a248b9bb236e38ae890, type: 2}
+  - {fileID: 2100000, guid: bdc95a8f75337ff418079caed13e7f03, type: 2}
+  - {fileID: 2100000, guid: 22ca749bfa1bd8b4ab945448158fbb1c, type: 2}
+  - {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  - {fileID: 2100000, guid: 5eadf2045f1c5cb4187d376e2f8cef68, type: 2}
+  - {fileID: 2100000, guid: 2161dda9e1a23b44e9608cfa092e0ffb, type: 2}
 --- !u!95 &778519639749960194
 Animator:
   serializedVersion: 3
@@ -7065,10 +7076,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadsIngredients: 0
-  IngredientsToLoad: []
+  IngredientsToLoad: 
   PoundsIngredients: 0
   CurrentContainer: {fileID: 2999731212878074674}
   Dock: {fileID: 656115349906405593}
+  MaxIngredients: 3
 --- !u!54 &2988592917073901544
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -7460,10 +7472,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadsIngredients: 0
-  IngredientsToLoad: []
-  PoundsIngredients: 1
+  IngredientsToLoad: 
+  PoundsIngredients: 0
   CurrentContainer: {fileID: 7954981039151184968}
   Dock: {fileID: 7245280615720524505}
+  MaxIngredients: 3
 --- !u!54 &5256046902301088371
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8107,10 +8120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3d9187757e4f94fba6ae118ae75041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 7617160027250664969}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
   MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
-  PositionLocks:
+  PositionAnchors:
   - {fileID: 795777510687017681}
   - {fileID: 4103725095522380770}
   - {fileID: 7532711292932268188}
@@ -8224,10 +8238,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3d9187757e4f94fba6ae118ae75041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 3631884321693058885}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
   MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
-  PositionLocks:
+  PositionAnchors:
   - {fileID: 2728881736958143663}
   - {fileID: 7348474588790647944}
   - {fileID: 8430372776450002952}
@@ -8449,10 +8464,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3d9187757e4f94fba6ae118ae75041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 4202400054748546556}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
   MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
-  PositionLocks:
+  PositionAnchors:
   - {fileID: 4367209655807224953}
   - {fileID: 3646852980077858974}
   - {fileID: 2075415484052250402}
@@ -8566,10 +8582,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3d9187757e4f94fba6ae118ae75041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 1985863545800875775}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
   MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
-  PositionLocks:
+  PositionAnchors:
   - {fileID: 6870795220907341392}
   - {fileID: 2229150449987967598}
   - {fileID: 4938739821245719129}
@@ -8683,14 +8700,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadsIngredients: 1
-  IngredientsToLoad:
-  - Ingredient_White
-  - Ingredient_Blue
-  - Ingredient_Green
-  - Ingredient_Red
+  IngredientsToLoad: 
   PoundsIngredients: 0
   CurrentContainer: {fileID: 6049104073910228016}
   Dock: {fileID: 4434872340162861391}
+  MaxIngredients: 3
 --- !u!54 &5141710034396855837
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9365,10 +9379,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3d9187757e4f94fba6ae118ae75041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 250750980452316233}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
   MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
-  PositionLocks:
+  PositionAnchors:
   - {fileID: 5129393038468868608}
   - {fileID: 2983458241480923488}
   - {fileID: 1363410244667532713}
@@ -9513,10 +9528,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadsIngredients: 0
-  IngredientsToLoad: []
+  IngredientsToLoad: 
   PoundsIngredients: 0
   CurrentContainer: {fileID: 4713159860636650675}
   Dock: {fileID: 4575562277367063750}
+  MaxIngredients: 3
 --- !u!54 &1979422562561339940
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9643,10 +9659,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadsIngredients: 0
-  IngredientsToLoad: []
+  IngredientsToLoad: 
   PoundsIngredients: 0
   CurrentContainer: {fileID: 4650773709401820358}
   Dock: {fileID: 4335544481216477959}
+  MaxIngredients: 3
 --- !u!54 &7459095627383701519
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9773,10 +9790,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3d9187757e4f94fba6ae118ae75041, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 7316787202788196425}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
   MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
-  PositionLocks:
+  PositionAnchors:
   - {fileID: 8066174976613791514}
   - {fileID: 7194883169023012379}
   - {fileID: 1521618661400541574}

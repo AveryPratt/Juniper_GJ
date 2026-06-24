@@ -909,6 +909,9 @@ MonoBehaviour:
   IngredientCount: 40
   IngredientTypes:
   - {fileID: 8761749206394849765, guid: 974e3fc3a12ebbc408777878b8b5e36b, type: 3}
+  - {fileID: 372292969911834965, guid: 16ca765987f356a4eb5f85521128a2ab, type: 3}
+  - {fileID: 2210800134964700699, guid: c4fbf5b0f52fef342894460ed33a8494, type: 3}
+  - {fileID: 6447735352563228612, guid: 86f0a4b0339f1554aa6ed2a5177ed543, type: 3}
 --- !u!1001 &1582392100044502443
 PrefabInstance:
   m_ObjectHideFlags: 0

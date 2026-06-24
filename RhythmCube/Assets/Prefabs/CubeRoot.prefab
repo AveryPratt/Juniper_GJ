@@ -6474,7 +6474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IngredientToLoad: 
+  LoadsIngredients: 0
+  IngredientsToLoad: []
   PoundsIngredients: 0
   CurrentContainer: {fileID: 4039809016531540230}
   Dock: {fileID: 8363482462301369017}
@@ -7063,7 +7064,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IngredientToLoad: 
+  LoadsIngredients: 0
+  IngredientsToLoad: []
   PoundsIngredients: 0
   CurrentContainer: {fileID: 2999731212878074674}
   Dock: {fileID: 656115349906405593}
@@ -7457,7 +7459,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IngredientToLoad: 
+  LoadsIngredients: 0
+  IngredientsToLoad: []
   PoundsIngredients: 1
   CurrentContainer: {fileID: 7954981039151184968}
   Dock: {fileID: 7245280615720524505}
@@ -8679,7 +8682,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IngredientToLoad: Ingredient
+  LoadsIngredients: 1
+  IngredientsToLoad:
+  - Ingredient_White
+  - Ingredient_Blue
+  - Ingredient_Green
+  - Ingredient_Red
   PoundsIngredients: 0
   CurrentContainer: {fileID: 6049104073910228016}
   Dock: {fileID: 4434872340162861391}
@@ -9504,7 +9512,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IngredientToLoad: 
+  LoadsIngredients: 0
+  IngredientsToLoad: []
   PoundsIngredients: 0
   CurrentContainer: {fileID: 4713159860636650675}
   Dock: {fileID: 4575562277367063750}
@@ -9633,7 +9642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dc168fd59e1e984996dc4c55b733e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IngredientToLoad: 
+  LoadsIngredients: 0
+  IngredientsToLoad: []
   PoundsIngredients: 0
   CurrentContainer: {fileID: 4650773709401820358}
   Dock: {fileID: 4335544481216477959}

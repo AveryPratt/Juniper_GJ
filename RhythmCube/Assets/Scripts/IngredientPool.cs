@@ -22,11 +22,12 @@ public class IngredientPool : MonoBehaviour
             Destroy(gameObject);
         }
 
+        Inventory = new Dictionary<string, GameObject[]>();
+        Pointers = new Dictionary<string, int>();
+
         foreach (GameObject type in IngredientTypes)
         {
-            Inventory = new Dictionary<string, GameObject[]>();
             Inventory.Add(type.name, new GameObject[IngredientCount]);
-            Pointers = new Dictionary<string, int>();
             Pointers.Add(type.name, 0);
 
             for (int i = 0; i < IngredientCount; i++)

@@ -6,7 +6,8 @@ using UnityEngine;
 
 public class AxisDetector : MonoBehaviour
 {
-    public string IngredientToLoad;
+    public bool LoadsIngredients = false;
+    public string[] IngredientsToLoad;
     public bool PoundsIngredients = false;
     public AxisContainer CurrentContainer;
     public Transform Dock;
@@ -16,10 +17,12 @@ public class AxisDetector : MonoBehaviour
     private AxisContainer _verificationCandidate;
     private Collider _verificationCollider;
     private float _verificationStartTime;
+    private Dictionary<string, int> _ingredientHistories;
 
     void Awake()
     {
         Queue = new Queue<Ingredient>();
+        _ingredientHistories = new Dictionary<string, int>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -36,7 +39,7 @@ public class AxisDetector : MonoBehaviour
 
     void Update()
     {
-        if (_verificationCandidate != null /*&& Time.time - _verificationStartTime >= .15f*/)
+        if (_verificationCandidate != null)
         {
             float dist = (_verificationCollider.transform.position - transform.position).magnitude;
 
@@ -55,17 +58,53 @@ public class AxisDetector : MonoBehaviour
 
     public void LoadIngredient()
     {
-        if (Queue.Any())
+        if (!LoadsIngredients || Queue.Any())
         {
             return;
         }
 
-        if (!string.IsNullOrEmpty(IngredientToLoad) && IngredientPool.Instance.Inventory.ContainsKey(IngredientToLoad))
+        UpdateIngredientHistories();
+
+        string forceLoad = null;
+
+        foreach (string key in _ingredientHistories.Keys.ToArray())
         {
-            Ingredient ingredient = IngredientPool.Instance.FetchIngredient(IngredientToLoad).GetComponent<Ingredient>();
+            _ingredientHistories[key] += 1;
+
+            if (_ingredientHistories[key] >= IngredientsToLoad.Length * 2)
+            {
+                forceLoad = key;
+            }
+        }
+
+        string ingredientType = IngredientsToLoad.Length == 0 ? null : !string.IsNullOrEmpty(forceLoad) ? forceLoad : IngredientsToLoad[Mathf.FloorToInt(Random.Range(0, IngredientsToLoad.Length))];
+        _ingredientHistories[ingredientType] = 0;
+
+        if (!string.IsNullOrEmpty(ingredientType) && IngredientPool.Instance.Inventory.ContainsKey(ingredientType))
+        {
+            Ingredient ingredient = IngredientPool.Instance.FetchIngredient(ingredientType).GetComponent<Ingredient>();
 
             Queue.Enqueue(ingredient);
             ingredient.Attatch(Dock);
+        }
+    }
+
+    private void UpdateIngredientHistories()
+    {
+        foreach (string key in IngredientsToLoad)
+        {
+            if (!_ingredientHistories.ContainsKey(key))
+            {
+                _ingredientHistories.Add(key, 0);
+            }
+        }
+
+        foreach (string key in _ingredientHistories.Keys)
+        {
+            if (!IngredientsToLoad.Contains(key))
+            {
+                _ingredientHistories.Remove(key);
+            }
         }
     }
 

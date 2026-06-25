@@ -8123,7 +8123,7 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 7617160027250664969}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
   PositionAnchors:
   - {fileID: 795777510687017681}
   - {fileID: 4103725095522380770}
@@ -8241,7 +8241,7 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 3631884321693058885}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
   PositionAnchors:
   - {fileID: 2728881736958143663}
   - {fileID: 7348474588790647944}
@@ -8467,7 +8467,7 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 4202400054748546556}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
   PositionAnchors:
   - {fileID: 4367209655807224953}
   - {fileID: 3646852980077858974}
@@ -8585,7 +8585,7 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 1985863545800875775}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
   PositionAnchors:
   - {fileID: 6870795220907341392}
   - {fileID: 2229150449987967598}
@@ -9382,7 +9382,7 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 250750980452316233}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
   PositionAnchors:
   - {fileID: 5129393038468868608}
   - {fileID: 2983458241480923488}
@@ -9793,7 +9793,7 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 7316787202788196425}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
   PositionAnchors:
   - {fileID: 8066174976613791514}
   - {fileID: 7194883169023012379}

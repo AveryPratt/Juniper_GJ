@@ -79,7 +79,7 @@ public partial class LevelController : MonoBehaviour
                 Metadata = "50",
                 IngredientsToAdd = new IIngredientType[]
                 {
-                    IIngredientType.White
+                    IIngredientType.Green
                 }
             }
         };

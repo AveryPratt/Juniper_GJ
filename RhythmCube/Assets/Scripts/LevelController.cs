@@ -18,7 +18,18 @@ public partial class LevelController : MonoBehaviour
     public CubeController CubeController;
     public IngredientPool IngredientPool;
 
-    public int Score = 0;
+    public List<KeyValuePair<IIngredientType[], string>> Recipes = new List<KeyValuePair<IIngredientType[], string>>()
+    {
+        new KeyValuePair<IIngredientType[], string>(new IIngredientType[3] { IIngredientType.White, IIngredientType.White, IIngredientType.White }, "10"),
+        new KeyValuePair<IIngredientType[], string>(new IIngredientType[3] { IIngredientType.Green, IIngredientType.Green, IIngredientType.Green }, "10"),
+        new KeyValuePair<IIngredientType[], string>(new IIngredientType[3] { IIngredientType.Purple, IIngredientType.Green, IIngredientType.Green }, "10"),
+        new KeyValuePair<IIngredientType[], string>(new IIngredientType[3] { IIngredientType.Red, IIngredientType.Green, IIngredientType.Green }, "10"),
+        new KeyValuePair<IIngredientType[], string>(new IIngredientType[3] { IIngredientType.Blue, IIngredientType.Green, IIngredientType.Green }, "10"),
+        new KeyValuePair<IIngredientType[], string>(new IIngredientType[3] { IIngredientType.Pink, IIngredientType.Green, IIngredientType.Green }, "10"),
+        new KeyValuePair<IIngredientType[], string>(new IIngredientType[3] { IIngredientType.Yellow, IIngredientType.Green, IIngredientType.Green }, "10")
+    };
+
+public int Score = 0;
     public bool Won = false;
 
     private int _activeScenarioIdx = -1;
@@ -51,11 +62,6 @@ public partial class LevelController : MonoBehaviour
 
         InitializeScenarios();
         IncrementScenario();
-    }
-
-    public void SetShakeyCam(bool val)
-    {
-        ShakeyCam = val;
     }
 
     void Update()
@@ -154,5 +160,35 @@ public partial class LevelController : MonoBehaviour
     public void PoundIngredients()
     {
         CubeController.PoundIngredients();
+    }
+
+    public string CheckRecipes(AxisContainer container)
+    {
+        if (container.Ingredients.Count < 3)
+        {
+            return null;
+        }
+
+        foreach (KeyValuePair<IIngredientType[], string> recipe in Recipes)
+        {
+            int i = 0;
+
+            foreach (Ingredient ingredient in container.Ingredients)
+            {
+                if (ingredient.IngredientType != recipe.Key[i])
+                {
+                    break;
+                }
+
+                i += 1;
+            }
+
+            if (i == 3)
+            {
+                return recipe.Value;
+            }
+        }
+
+        return null;
     }
 }

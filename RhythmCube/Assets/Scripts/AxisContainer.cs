@@ -14,6 +14,8 @@ public class AxisContainer : MonoBehaviour
     public Transform[] PositionAnchors;
     public LinkedList<Ingredient> Ingredients;
 
+    private string _recipeResult;
+
     public AxisContainer()
     {
         Ingredients = new LinkedList<Ingredient>();
@@ -71,6 +73,17 @@ public class AxisContainer : MonoBehaviour
         for (int i = 0; i < Ingredients.Count; i++)
         {
             Ingredients.ElementAt(i).Attatch(PositionAnchors[i]);
+        }
+
+        _recipeResult = LevelController.Instance.CheckRecipes(this);
+
+        if (_recipeResult == null)
+        {
+            Unmark();
+        }
+        else
+        {
+            Mark();
         }
     }
 }

@@ -6,16 +6,6 @@ public class Ingredient : MonoBehaviour
 {
     public IIngredientType IngredientType;
 
-    void Awake()
-    {
-        //Transform = GetComponent<Transform>();
-    }
-
-    public void SwitchType(IIngredientType ingredientType)
-    {
-
-    }
-
     public void Attatch(Transform parent)
     {
         gameObject.transform.SetParent(parent);
@@ -24,6 +14,12 @@ public class Ingredient : MonoBehaviour
         {
             gameObject.transform.localPosition = Vector3.zero;
         }
+    }
+
+    public void Explode()
+    {
+        IngredientPool.Instance.CreateExplosion(IngredientType, transform.position);
+        gameObject.SetActive(false);
     }
 }
 

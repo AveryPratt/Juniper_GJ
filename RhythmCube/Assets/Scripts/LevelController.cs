@@ -10,10 +10,28 @@ public partial class LevelController : MonoBehaviour
 {
     public static LevelController Instance;
 
+    private bool _isPaused = false;
+    public bool IsPaused
+    {
+        get
+        {
+            return _isPaused;
+        }
+        set
+        {
+            _isPaused = value;
+            Time.timeScale = _isPaused ? 0 : 1;
+            InstructionText.gameObject.SetActive(!_isPaused);
+            PausedText.gameObject.SetActive(_isPaused);
+            PausedDescription.gameObject.SetActive(_isPaused);
+        }
+    }
     public bool ShakeyCam = true;
     public Camera MainCamera;
     public Camera StableCamera;
     public FadeText InstructionText;
+    public Text PausedText;
+    public Text PausedDescription;
     public Text ScoreText;
     public CubeController CubeController;
     public IngredientPool IngredientPool;
@@ -62,6 +80,14 @@ public int Score = 0;
 
         InitializeScenarios();
         IncrementScenario();
+    }
+
+    void OnEnable()
+    {
+        if (GameController.Instance != null)
+        {
+            GameController.Instance.PlayerInput.OnPause += Pause;
+        }
     }
 
     void Update()
@@ -126,6 +152,11 @@ public int Score = 0;
                 KeysPressed["Escape"] = true;
             }
         }
+    }
+
+    public void Pause()
+    {
+        IsPaused = !IsPaused;
     }
 
     public void IncrementScenario()

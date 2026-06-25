@@ -270,6 +270,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1374342734797688280, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
+      propertyPath: m_Name
+      value: Paused_Description
+      objectReference: {fileID: 0}
+    - target: {fileID: 1374342734797688280, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1960970132984915888, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
       propertyPath: m_Name
       value: LevelController
@@ -316,6 +324,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2025222765128852497, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4559772356085467349, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6849483422063142487, guid: c4c5b139f94a5d041a3ae19e9d4c79ba, type: 3}

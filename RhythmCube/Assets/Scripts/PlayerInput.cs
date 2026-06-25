@@ -11,13 +11,13 @@ public class PlayerInput : MonoBehaviour
     public event Action OnRight;
     public event Action OnCounterClockwise;
     public event Action OnClockwise;
+    public event Action OnPause;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Time.timeScale = Time.timeScale == 0 ? 1 : 0;
-            Debug.Log("Pause");
+            OnPause?.Invoke();
         }
 
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))

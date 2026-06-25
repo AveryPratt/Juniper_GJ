@@ -68,6 +68,11 @@ public int Score = 0;
     {
         ScoreText.text = "Score: " + Score.ToString();
 
+        if (_waitTimer > 0)
+        {
+            _waitTimer -= Time.deltaTime;
+        }
+
         if (ShakeyCam)
         {
             if (StableCamera.isActiveAndEnabled)
@@ -115,6 +120,10 @@ public int Score = 0;
             if (Input.GetKeyDown(KeyCode.E))
             {
                 KeysPressed["E"] = true;
+            }
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                KeysPressed["Escape"] = true;
             }
         }
     }

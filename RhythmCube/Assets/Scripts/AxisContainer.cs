@@ -31,6 +31,16 @@ public class AxisContainer : MonoBehaviour
         MeshRenderer.material = DefaultMaterial;
     }
 
+    public void ExplodeAll()
+    {
+        foreach (Ingredient ingredient in Ingredients)
+        {
+            ingredient.Explode();
+        }
+
+        Ingredients.Clear();
+    }
+
     public bool TryAddIngredient(Ingredient ingredient)
     {
         if (ingredient == null)
@@ -41,7 +51,15 @@ public class AxisContainer : MonoBehaviour
         if (Ingredients.Count >= PositionAnchors.Length)
         {
             CubeController.PushToCenter(Ingredients.Last.Value);
-            Ingredients.RemoveLast();
+
+            if (_recipeResult == "10")
+            {
+                ExplodeAll();
+            }
+            else
+            {
+                Ingredients.RemoveLast();
+            }
         }
 
         Ingredients.AddFirst(ingredient);

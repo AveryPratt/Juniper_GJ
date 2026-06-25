@@ -25,11 +25,11 @@ public class Ingredient : MonoBehaviour
 
 public enum IIngredientType
 {
-    White,
-    Green,
-    Purple,
-    Red,
-    Blue,
-    Pink,
-    Yellow
+    White, // sphere
+    Green, // diamond
+    Purple, // donut
+    Red, // heart
+    Blue, // droplet
+    Pink, // flower
+    Yellow // 
 }

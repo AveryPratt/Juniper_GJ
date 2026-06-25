@@ -63,11 +63,21 @@ public partial class LevelController : MonoBehaviour
                 InstructionText = "Press E",
                 Metadata = "E"
             },
-            // stage 1
-            new Scenario(CheckScore)
+            new Scenario(CheckKeyPressed)
+            {
+                InstructionText = "Press Esc",
+                Metadata = "Escape"
+            },
+            new Scenario(Wait)
             {
                 InstructionText = "Good Luck!",
-                Metadata = "10",
+                Metadata = "3"
+            },
+            // stage 1
+            new Scenario(CheckActionCompleted)
+            {
+                InstructionText = "Get 3 in a row",
+                Metadata = "3-of-a-kind",
                 IngredientsToAdd = new IIngredientType[]
                 {
                     IIngredientType.White
@@ -92,8 +102,17 @@ public partial class LevelController : MonoBehaviour
         { "S", false },
         { "D", false },
         { "Q", false },
-        { "E", false }
+        { "E", false },
+        { "Escape", false }
     };
+
+    public Dictionary<string, bool> ActionsCompleted = new Dictionary<string, bool>()
+    {
+        { "3-of-a-kind", false }
+    };
+
+    private bool _waitTriggered = false;
+    private float _waitTimer = 0;
 
     public bool CheckKeyPressed(LevelController controller, Scenario scenario)
     {
@@ -105,5 +124,27 @@ public partial class LevelController : MonoBehaviour
         int threshold = int.Parse(scenario.Metadata);
 
         return Score >= threshold;
+    }
+
+    public bool CheckActionCompleted(LevelController controller, Scenario scenario)
+    {
+        return ActionsCompleted[scenario.Metadata];
+    }
+
+    public bool Wait(LevelController controller, Scenario scenario)
+    {
+        if (!_waitTriggered)
+        {
+            _waitTimer = float.Parse(scenario.Metadata);
+            _waitTriggered = true;
+        }
+
+        if (_waitTimer <= 0)
+        {
+            _waitTriggered = false;
+            return true;
+        }
+
+        return false;
     }
 }

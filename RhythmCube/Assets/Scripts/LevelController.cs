@@ -305,36 +305,36 @@ public partial class LevelController : MonoBehaviour
         }
 
         // Duplets/Triplets
-        GetDuplets(container);
+        GetTuplets(container);
 
-        if (container.Duplets != null)
+        if (container.Tuplets != null)
         {
-            if (container.Duplets.Length > 2)
+            if (container.Tuplets.Length > 2)
             {
-                foreach (AxisContainer dc in container.Duplets)
+                foreach (AxisContainer dc in container.Tuplets)
                 {
-                    dc.Mark("Quadruplets");
+                    dc.Mark("Quadruplet");
                 }
 
-                return "Quadruplets";
+                return "Quadruplet";
             }
-            else if (container.Duplets.Length == 2)
+            else if (container.Tuplets.Length == 2)
             {
-                foreach (AxisContainer dc in container.Duplets)
+                foreach (AxisContainer dc in container.Tuplets)
                 {
-                    dc.Mark("Triplets");
+                    dc.Mark("Triplet");
                 }
 
-                return "Triplets";
+                return "Triplet";
             }
-            else if (container.Duplets.Length == 1)
+            else if (container.Tuplets.Length == 1)
             {
-                foreach (AxisContainer dc in container.Duplets)
+                foreach (AxisContainer dc in container.Tuplets)
                 {
-                    dc.Mark("Duplets");
+                    dc.Mark("Duplet");
                 }
 
-                return "Duplets";
+                return "Duplet";
             }
         }
 
@@ -342,7 +342,7 @@ public partial class LevelController : MonoBehaviour
         return null;
     }
 
-    public void GetDuplets(AxisContainer container)
+    public void GetTuplets(AxisContainer container)
     {
         List<AxisContainer> duplicateContainers = new List<AxisContainer>();
         Ingredient[] ingredients = container.Ingredients.ToArray();
@@ -370,6 +370,6 @@ public partial class LevelController : MonoBehaviour
             }
         }
 
-        container.Duplets = duplicateContainers.ToArray();
+        container.Tuplets = duplicateContainers.ToArray();
     }
 }

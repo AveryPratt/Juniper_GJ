@@ -131,8 +131,6 @@ public class CubeController : MonoBehaviour
                     centerMat = CenterMaterials[0];
                     break;
             }
-
-            LevelController.Instance.Score += 6;
         }
 
         _centerMeshRenderer.material = centerMat;

@@ -17,7 +17,7 @@ public class AxisContainer : MonoBehaviour
     public Transform[] PositionAnchors;
     public LinkedList<Ingredient> Ingredients;
 
-    public AxisContainer[] Duplets { get; set; }
+    public AxisContainer[] Tuplets { get; set; }
 
     private string _recipeResult;
 
@@ -51,13 +51,13 @@ public class AxisContainer : MonoBehaviour
             case "Yellow":
                 MeshRenderer.material = MarkedMaterials[6];
                 break;
-            case "Duplets":
+            case "Duplet":
                 MeshRenderer.material = CoolMaterial;
                 break;
-            case "Triplets":
+            case "Triplet":
                 MeshRenderer.material = WarmMaterial;
                 break;
-            case "Quadruplets":
+            case "Quadruplet":
                 MeshRenderer.material = HotMaterial;
                 break;
             default:
@@ -100,21 +100,65 @@ public class AxisContainer : MonoBehaviour
 
         if (Ingredients.Count >= PositionAnchors.Length)
         {
-            if (_valid3OfAKindRecipes.Contains(_recipeResult) && ingredient.IngredientType == Ingredients.Last.Value.IngredientType)
+            if (ingredient.IngredientType == Ingredients.First.Value.IngredientType)
             {
-                CubeController.PushToCenter(Ingredients.Last.Value);
-                LevelController.Instance.ActionsCompleted["3-of-a-kind"] = true;
-                ingredient.Explode();
-                ExplodeAll();
-                Reorganize();
-                return true;
+                if (_valid3OfAKindRecipes.Contains(_recipeResult))
+                {
+                    CubeController.PushToCenter(Ingredients.First.Value);
+                    LevelController.Instance.ActionsCompleted["3-of-a-kind"] = true;
+                    ingredient.Explode();
+                    ExplodeAll();
+                    Reorganize();
+                    LevelController.Instance.Score += 6;
+                    return true;
+                }
+                else if (_recipeResult == "Duplet")
+                {
+                    foreach (AxisContainer other in Tuplets)
+                    {
+                        other.ExplodeAll();
+                    }
+
+                    LevelController.Instance.ActionsCompleted["Duplet"] = true;
+                    ingredient.Explode();
+                    ExplodeAll();
+                    Reorganize();
+                    LevelController.Instance.Score += 18;
+                    return true;
+                }
+                else if (_recipeResult == "Triplet")
+                {
+                    foreach (AxisContainer other in Tuplets)
+                    {
+                        other.ExplodeAll();
+                    }
+
+                    LevelController.Instance.ActionsCompleted["Triplet"] = true;
+                    ingredient.Explode();
+                    ExplodeAll();
+                    Reorganize();
+                    LevelController.Instance.Score += 36;
+                    return true;
+                }
+                else if (_recipeResult == "Quadruplet")
+                {
+                    foreach (AxisContainer other in Tuplets)
+                    {
+                        other.ExplodeAll();
+                    }
+
+                    LevelController.Instance.ActionsCompleted["Quadruplet"] = true;
+                    ingredient.Explode();
+                    ExplodeAll();
+                    Reorganize();
+                    LevelController.Instance.Score += 72;
+                    return true;
+                }
             }
-            else
-            {
-                Ingredients.Last.Value.Explode();
-                Ingredients.RemoveLast();
-                LevelController.Instance.Score -= 1;
-            }
+
+            Ingredients.Last.Value.Explode();
+            Ingredients.RemoveLast();
+            LevelController.Instance.Score -= 1;
         }
 
         Ingredients.AddFirst(ingredient);
@@ -151,15 +195,15 @@ public class AxisContainer : MonoBehaviour
         foreach (AxisContainer dc in LevelController.Instance.CubeController.Containers)
         {
             dc._recipeResult = LevelController.Instance.CheckRecipes(dc);
-        }
 
-        if (_recipeResult == null)
-        {
-            Unmark();
-        }
-        else
-        {
-            Mark(_recipeResult);
+            if (dc._recipeResult == null)
+            {
+                dc.Unmark();
+            }
+            else
+            {
+                dc.Mark(dc._recipeResult);
+            }
         }
     }
 }

@@ -138,7 +138,7 @@ Fill 2 containers with the same pattern. Push an object of the same outside colo
 +6 points for changing center color by activating 3 in a row.
 +18 points for activating duplicate patterns.
 -1 point for pushing the wrong color object into the center.",
-                Metadata = "Duplets"
+                Metadata = "Duplet"
             },
             new Scenario(CheckScore)
             {
@@ -175,7 +175,7 @@ Fill 3 containers with the same pattern to activate triplets.
 +18 points for activating duplicate patterns.
 +36 points for activating triplet patterns.
 -1 point for pushing the wrong color object into the center.",
-                Metadata = "Triplets",
+                Metadata = "Triplet",
             },
             new Scenario(CheckScore)
             {
@@ -214,7 +214,7 @@ Fill 4 containers with the same pattern to activate quadruplets.
 +36 points for activating triplet patterns.
 +72 points for activating quadruplet patterns.
 -1 point for pushing the wrong color object into the center.",
-                Metadata = "Quadruplets"
+                Metadata = "Quadruplet"
             },
             new Scenario(CheckScore)
             {
@@ -257,7 +257,7 @@ Win game by changing center to 7 distinct colors without losing a point.
 +36 points for activating triplet patterns.
 +72 points for activating quadruplet patterns.
 -1 point for pushing the wrong color object into the center.",
-                Metadata = "Final"
+                Metadata = "Finale"
             },
             new Scenario(Wait)
             {
@@ -281,10 +281,10 @@ Win game by changing center to 7 distinct colors without losing a point.
     public Dictionary<string, bool> ActionsCompleted = new Dictionary<string, bool>()
     {
         { "3-of-a-kind", false },
-        { "Duplets", false },
-        { "Triplets", false },
-        { "Quadruplets", false },
-        { "Final", false }
+        { "Duplet", false },
+        { "Triplet", false },
+        { "Quadruplet", false },
+        { "Finale", false }
     };
 
     private bool _waitTriggered = false;

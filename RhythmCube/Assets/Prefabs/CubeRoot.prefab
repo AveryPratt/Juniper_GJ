@@ -6633,6 +6633,8 @@ MonoBehaviour:
   - {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
   - {fileID: 2100000, guid: 5eadf2045f1c5cb4187d376e2f8cef68, type: 2}
   - {fileID: 2100000, guid: 2161dda9e1a23b44e9608cfa092e0ffb, type: 2}
+  Containers: []
+  Detectors: []
 --- !u!95 &778519639749960194
 Animator:
   serializedVersion: 3
@@ -8123,7 +8125,17 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 7617160027250664969}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  MarkedMaterials:
+  - {fileID: 2100000, guid: 5eadf2045f1c5cb4187d376e2f8cef68, type: 2}
+  - {fileID: 2100000, guid: f29a80b92d0b6a248b9bb236e38ae890, type: 2}
+  - {fileID: 2100000, guid: 22ca749bfa1bd8b4ab945448158fbb1c, type: 2}
+  - {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  - {fileID: 2100000, guid: 832613779dac9d44b9117779d9b5bbff, type: 2}
+  - {fileID: 2100000, guid: bdc95a8f75337ff418079caed13e7f03, type: 2}
+  - {fileID: 2100000, guid: 2161dda9e1a23b44e9608cfa092e0ffb, type: 2}
+  CoolMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  WarmMaterial: {fileID: 2100000, guid: c83a3f8d3e8180f43975ce96ae9c383e, type: 2}
+  HotMaterial: {fileID: 2100000, guid: cfc70dfd32d1eeb45a461c622001b281, type: 2}
   PositionAnchors:
   - {fileID: 795777510687017681}
   - {fileID: 4103725095522380770}
@@ -8241,7 +8253,17 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 3631884321693058885}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  MarkedMaterials:
+  - {fileID: 2100000, guid: 5eadf2045f1c5cb4187d376e2f8cef68, type: 2}
+  - {fileID: 2100000, guid: f29a80b92d0b6a248b9bb236e38ae890, type: 2}
+  - {fileID: 2100000, guid: 22ca749bfa1bd8b4ab945448158fbb1c, type: 2}
+  - {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  - {fileID: 2100000, guid: 832613779dac9d44b9117779d9b5bbff, type: 2}
+  - {fileID: 2100000, guid: bdc95a8f75337ff418079caed13e7f03, type: 2}
+  - {fileID: 2100000, guid: 2161dda9e1a23b44e9608cfa092e0ffb, type: 2}
+  CoolMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  WarmMaterial: {fileID: 2100000, guid: c83a3f8d3e8180f43975ce96ae9c383e, type: 2}
+  HotMaterial: {fileID: 2100000, guid: cfc70dfd32d1eeb45a461c622001b281, type: 2}
   PositionAnchors:
   - {fileID: 2728881736958143663}
   - {fileID: 7348474588790647944}
@@ -8467,7 +8489,17 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 4202400054748546556}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  MarkedMaterials:
+  - {fileID: 2100000, guid: 5eadf2045f1c5cb4187d376e2f8cef68, type: 2}
+  - {fileID: 2100000, guid: f29a80b92d0b6a248b9bb236e38ae890, type: 2}
+  - {fileID: 2100000, guid: 22ca749bfa1bd8b4ab945448158fbb1c, type: 2}
+  - {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  - {fileID: 2100000, guid: 832613779dac9d44b9117779d9b5bbff, type: 2}
+  - {fileID: 2100000, guid: bdc95a8f75337ff418079caed13e7f03, type: 2}
+  - {fileID: 2100000, guid: 2161dda9e1a23b44e9608cfa092e0ffb, type: 2}
+  CoolMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  WarmMaterial: {fileID: 2100000, guid: c83a3f8d3e8180f43975ce96ae9c383e, type: 2}
+  HotMaterial: {fileID: 2100000, guid: cfc70dfd32d1eeb45a461c622001b281, type: 2}
   PositionAnchors:
   - {fileID: 4367209655807224953}
   - {fileID: 3646852980077858974}
@@ -8585,7 +8617,17 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 1985863545800875775}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  MarkedMaterials:
+  - {fileID: 2100000, guid: 5eadf2045f1c5cb4187d376e2f8cef68, type: 2}
+  - {fileID: 2100000, guid: f29a80b92d0b6a248b9bb236e38ae890, type: 2}
+  - {fileID: 2100000, guid: 22ca749bfa1bd8b4ab945448158fbb1c, type: 2}
+  - {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  - {fileID: 2100000, guid: 832613779dac9d44b9117779d9b5bbff, type: 2}
+  - {fileID: 2100000, guid: bdc95a8f75337ff418079caed13e7f03, type: 2}
+  - {fileID: 2100000, guid: 2161dda9e1a23b44e9608cfa092e0ffb, type: 2}
+  CoolMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  WarmMaterial: {fileID: 2100000, guid: c83a3f8d3e8180f43975ce96ae9c383e, type: 2}
+  HotMaterial: {fileID: 2100000, guid: cfc70dfd32d1eeb45a461c622001b281, type: 2}
   PositionAnchors:
   - {fileID: 6870795220907341392}
   - {fileID: 2229150449987967598}
@@ -9382,7 +9424,17 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 250750980452316233}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  MarkedMaterials:
+  - {fileID: 2100000, guid: 5eadf2045f1c5cb4187d376e2f8cef68, type: 2}
+  - {fileID: 2100000, guid: f29a80b92d0b6a248b9bb236e38ae890, type: 2}
+  - {fileID: 2100000, guid: 22ca749bfa1bd8b4ab945448158fbb1c, type: 2}
+  - {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  - {fileID: 2100000, guid: 832613779dac9d44b9117779d9b5bbff, type: 2}
+  - {fileID: 2100000, guid: bdc95a8f75337ff418079caed13e7f03, type: 2}
+  - {fileID: 2100000, guid: 2161dda9e1a23b44e9608cfa092e0ffb, type: 2}
+  CoolMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  WarmMaterial: {fileID: 2100000, guid: c83a3f8d3e8180f43975ce96ae9c383e, type: 2}
+  HotMaterial: {fileID: 2100000, guid: cfc70dfd32d1eeb45a461c622001b281, type: 2}
   PositionAnchors:
   - {fileID: 5129393038468868608}
   - {fileID: 2983458241480923488}
@@ -9793,7 +9845,17 @@ MonoBehaviour:
   CubeController: {fileID: 768754249508057738}
   MeshRenderer: {fileID: 7316787202788196425}
   DefaultMaterial: {fileID: 2100000, guid: 556019dbbb2d37a4bb538e83f4ec6166, type: 2}
-  MarkedMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  MarkedMaterials:
+  - {fileID: 2100000, guid: 5eadf2045f1c5cb4187d376e2f8cef68, type: 2}
+  - {fileID: 2100000, guid: f29a80b92d0b6a248b9bb236e38ae890, type: 2}
+  - {fileID: 2100000, guid: 22ca749bfa1bd8b4ab945448158fbb1c, type: 2}
+  - {fileID: 2100000, guid: c3a5cbb1b398e1744bbb3443e5b829f1, type: 2}
+  - {fileID: 2100000, guid: 832613779dac9d44b9117779d9b5bbff, type: 2}
+  - {fileID: 2100000, guid: bdc95a8f75337ff418079caed13e7f03, type: 2}
+  - {fileID: 2100000, guid: 2161dda9e1a23b44e9608cfa092e0ffb, type: 2}
+  CoolMaterial: {fileID: 2100000, guid: 7ff6deaf68509c144b341eec92771337, type: 2}
+  WarmMaterial: {fileID: 2100000, guid: c83a3f8d3e8180f43975ce96ae9c383e, type: 2}
+  HotMaterial: {fileID: 2100000, guid: cfc70dfd32d1eeb45a461c622001b281, type: 2}
   PositionAnchors:
   - {fileID: 8066174976613791514}
   - {fileID: 7194883169023012379}

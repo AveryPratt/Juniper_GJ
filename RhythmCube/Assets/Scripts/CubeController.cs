@@ -26,8 +26,8 @@ public class CubeController : MonoBehaviour
 
     public Material[] CenterMaterials;
 
-    private AxisContainer[] _containers;
-    private AxisDetector[] _detectors;
+    public AxisContainer[] Containers;
+    public AxisDetector[] Detectors;
     private Ingredient _centerIngredient;
 
     void Awake()
@@ -47,7 +47,7 @@ public class CubeController : MonoBehaviour
             GameController.Instance.PlayerInput.OnClockwise += MoveClockwise;
         }
 
-        _containers = new AxisContainer[]
+        Containers = new AxisContainer[]
         {
             Axis_X,
             Axis_Y,
@@ -57,7 +57,7 @@ public class CubeController : MonoBehaviour
             Axis_Z1
         };
 
-        _detectors = new AxisDetector[]
+        Detectors = new AxisDetector[]
         {
             Detector_X,
             Detector_Y,
@@ -128,12 +128,11 @@ public class CubeController : MonoBehaviour
                     centerMat = CenterMaterials[7];
                     break;
                 default:
-                    Debug.Log("Unhandled gameobject type in center.");
                     centerMat = CenterMaterials[0];
                     break;
             }
 
-            LevelController.Instance.Score += 1;
+            LevelController.Instance.Score += 6;
         }
 
         _centerMeshRenderer.material = centerMat;
@@ -141,7 +140,7 @@ public class CubeController : MonoBehaviour
 
     public void LoadIngredients()
     {
-        foreach (AxisDetector detector in _detectors)
+        foreach (AxisDetector detector in Detectors)
         {
             detector.LoadIngredient();
         }
@@ -149,7 +148,7 @@ public class CubeController : MonoBehaviour
 
     public void DockIngredients()
     {
-        foreach (AxisDetector detector in _detectors)
+        foreach (AxisDetector detector in Detectors)
         {
             detector.DockIngredient();
         }
@@ -157,7 +156,7 @@ public class CubeController : MonoBehaviour
 
     public void PoundIngredients()
     {
-        foreach (AxisDetector detector in _detectors)
+        foreach (AxisDetector detector in Detectors)
         {
             detector.Pound();
         }

@@ -9,10 +9,15 @@ public class AxisContainer : MonoBehaviour
 
     public MeshRenderer MeshRenderer;
     public Material DefaultMaterial;
-    public Material MarkedMaterial;
+    public Material[] MarkedMaterials;
+    public Material CoolMaterial;
+    public Material WarmMaterial;
+    public Material HotMaterial;
 
     public Transform[] PositionAnchors;
     public LinkedList<Ingredient> Ingredients;
+
+    public AxisContainer[] Duplets { get; set; }
 
     private string _recipeResult;
 
@@ -21,9 +26,43 @@ public class AxisContainer : MonoBehaviour
         Ingredients = new LinkedList<Ingredient>();
     }
 
-    public void Mark()
+    public void Mark(string markValue)
     {
-        MeshRenderer.material = MarkedMaterial;
+        switch (markValue)
+        {
+            case "White":
+                MeshRenderer.material = MarkedMaterials[0];
+                break;
+            case "Green":
+                MeshRenderer.material = MarkedMaterials[1];
+                break;
+            case "Purple":
+                MeshRenderer.material = MarkedMaterials[2];
+                break;
+            case "Red":
+                MeshRenderer.material = MarkedMaterials[3];
+                break;
+            case "Blue":
+                MeshRenderer.material = MarkedMaterials[4];
+                break;
+            case "Pink":
+                MeshRenderer.material = MarkedMaterials[5];
+                break;
+            case "Yellow":
+                MeshRenderer.material = MarkedMaterials[6];
+                break;
+            case "Duplets":
+                MeshRenderer.material = CoolMaterial;
+                break;
+            case "Triplets":
+                MeshRenderer.material = WarmMaterial;
+                break;
+            case "Quadruplets":
+                MeshRenderer.material = HotMaterial;
+                break;
+            default:
+                throw new System.Exception("Unhandled mark value");
+        }
     }
 
     public void Unmark()
@@ -41,6 +80,17 @@ public class AxisContainer : MonoBehaviour
         Ingredients.Clear();
     }
 
+    private string[] _valid3OfAKindRecipes = new string[]
+    {
+        "White",
+        "Green",
+        "Purple",
+        "Red",
+        "Blue",
+        "Pink",
+        "Yellow"
+    };
+
     public bool TryAddIngredient(Ingredient ingredient)
     {
         if (ingredient == null)
@@ -50,15 +100,20 @@ public class AxisContainer : MonoBehaviour
 
         if (Ingredients.Count >= PositionAnchors.Length)
         {
-            CubeController.PushToCenter(Ingredients.Last.Value);
-
-            if (_recipeResult == "10")
+            if (_valid3OfAKindRecipes.Contains(_recipeResult) && ingredient.IngredientType == Ingredients.Last.Value.IngredientType)
             {
+                CubeController.PushToCenter(Ingredients.Last.Value);
+                LevelController.Instance.ActionsCompleted["3-of-a-kind"] = true;
+                ingredient.Explode();
                 ExplodeAll();
+                Reorganize();
+                return true;
             }
             else
             {
+                Ingredients.Last.Value.Explode();
                 Ingredients.RemoveLast();
+                LevelController.Instance.Score -= 1;
             }
         }
 
@@ -93,7 +148,10 @@ public class AxisContainer : MonoBehaviour
             Ingredients.ElementAt(i).Attatch(PositionAnchors[i]);
         }
 
-        _recipeResult = LevelController.Instance.CheckRecipes(this);
+        foreach (AxisContainer dc in LevelController.Instance.CubeController.Containers)
+        {
+            dc._recipeResult = LevelController.Instance.CheckRecipes(dc);
+        }
 
         if (_recipeResult == null)
         {
@@ -101,7 +159,7 @@ public class AxisContainer : MonoBehaviour
         }
         else
         {
-            Mark();
+            Mark(_recipeResult);
         }
     }
 }

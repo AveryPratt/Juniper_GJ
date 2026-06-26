@@ -16,6 +16,11 @@ public class FadeText : MonoBehaviour
         _setTime = Time.time;
     }
 
+    public void RefreshText()
+    {
+        _setTime = Time.time;
+    }
+
     void Start()
     {
         _setTime = Time.time;
